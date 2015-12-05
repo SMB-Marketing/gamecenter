@@ -43,9 +43,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return JSON.stringify(object, null, '  ');
         }
 
-        var retval = object[name].qtr + ' ' + object[name].clock;
-        if (typeof object[name].home !== "undefined" && typeof object[name].home.stats !== "undefined") retval += (' home:stats: ' + JSON.stringify(object[name].home.stats,null, '  '));
-        if (typeof object[name].away !== "undefined" && typeof object[name].away.stats !== "undefined") retval += (' away:stats: ' + JSON.stringify(object[name].away.stats,null, '  '));
+        var retval = 'Quarter ' + object[name].qtr + ' ' + object[name].clock + ' ' + object[name].posteam + ((object[name].yl!== '') ? (' on ' + object[name].yl):'');
+        if (typeof object[name].note !== "undefined" ) retval += (' note: ' + object[name].note);
+        //if (typeof object[name].home !== "undefined" && typeof object[name].home.stats !== "undefined") retval += (' home:stats: ' + JSON.stringify(object[name].home.stats,null, '  '));
+        //if (typeof object[name].away !== "undefined" && typeof object[name].away.stats !== "undefined") retval += (' away:stats: ' + JSON.stringify(object[name].away.stats,null, '  '));
         return retval;
 
         ;
