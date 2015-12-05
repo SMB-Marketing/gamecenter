@@ -28,6 +28,11 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   // See https://github.com/Polymer/polymer/issues/1381
   window.addEventListener('WebComponentsReady', function() {
     // imports are loaded and elements have been registered
+    /*
+    PolymerExpressions.prototype.json = function(object) {
+        return JSON.stringify(object);
+      }
+    */
   });
 
   // Close drawer after menu item is selected if drawerPanel is narrow
@@ -38,4 +43,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   };
 
+/*
+  app.stringify = function(obj) {
+    return JSON.stringify(obj);
+    };
+*/
+
 })(document);
+
+
