@@ -17,6 +17,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   </style>
   <template>
+    <!-- <pre>[[stringify(object,name)]]</pre> -->
     <pre>[[stringify(object)]]</pre>
   </template>
 </dom-module>
@@ -31,13 +32,33 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
       },
 
-      stringify: function(object) {
+      stringify: function(object,name) {
         if (!object) {
           return '';
         }
-
         return JSON.stringify(object, null, '  ');
       }
+/*
+      properties: {
+        object: {
+          type: Object
+        },
+        name: {
+          type: Object
+        }
+      },
+
+      stringify: function(object,name) {
+      console.log('object',object,'name',name);
+        if (!object) {
+          return '';
+        }
+        if (!name) {
+        return JSON.stringify(object, null, '  ');
+        }
+        return object[name].clock;
+      }
+*/
   });
 })();
 </script>
