@@ -125,7 +125,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     <template is="dom-repeat" items="[[event]]" as="obj">
       <br><!-- <span>obj: </span><span>[[obj]]</span> -->
         <span><nfl-liveupdate object=[[obj]] name=[[event.__firebaseKey__]]></nfl-liveupdate></span>
-        <span id="detail_[[event.__firebaseKey__]][[obj.nextupdate]]" class="details"><json-stringify object=[[obj]]></json-stringify></span>
+        <span id="detail_[[event.__firebaseKey__]]_[[obj.nextupdate]]" class="details"><json-stringify object=[[obj]]></json-stringify></span><button id="show_[[event.__firebaseKey__]]_[[obj.nextupdate]]" onclick="document.querySelector('#'+this.id.replace('show_','detail_')).style.display='inline';">+</button>
         <!-- <span>[[obj.nextupdate]] [[obj.2015113000]]</span> -->
         <!-- <span>[[obj.nextupdate]] [[event.__firebaseKey__]]</span> -->
         <!-- <span><json-stringify object=[[obj]] name=[[event.__firebaseKey__]]></json-stringify></span> -->
