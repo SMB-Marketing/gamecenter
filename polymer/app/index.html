@@ -112,9 +112,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
               <paper-material elevation="1">
 
 <button on-click="displayDetails">Details</button>
+<!--<button on-click="displayDetailsOne">One</button> -->
 <template is="dom-bind">
+      <!-- order-by-child="nextupdate" -->
     <firebase-collection
-      order-by-child="nextupdate"
       limit-to-first="3"
       location="https://sportsdata.firebaseio.com/nfl/gamecenter_live"
       data="{{events}}"></firebase-collection>
@@ -122,9 +123,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       <h4>[[event.__firebaseKey__]]</h4>
       <!-- <span>event: </span><span>[[event]]</span> -->
     <template is="dom-repeat" items="[[event]]" as="obj">
-      <hr><!-- <span>obj: </span><span>[[obj]]</span> -->
-        <span class="details"><json-stringify object=[[obj]]></json-stringify></span>
+      <br><!-- <span>obj: </span><span>[[obj]]</span> -->
         <span><nfl-liveupdate object=[[obj]] name=[[event.__firebaseKey__]]></nfl-liveupdate></span>
+        <span id="detail_[[event.__firebaseKey__]][[obj.nextupdate]]" class="details"><json-stringify object=[[obj]]></json-stringify></span>
         <!-- <span>[[obj.nextupdate]] [[obj.2015113000]]</span> -->
         <!-- <span>[[obj.nextupdate]] [[event.__firebaseKey__]]</span> -->
         <!-- <span><json-stringify object=[[obj]] name=[[event.__firebaseKey__]]></json-stringify></span> -->

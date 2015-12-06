@@ -22,7 +22,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     elements[i].style.display='inline';
     //console.log(elements[i]);
     }
-  }
+  };
+
+  app.displayDetailsOne = function() {
+  console.log(this);
+    //document.querySelector('.details_'+this).show();
+  };
 
   app.displayInstalledToast = function() {
     document.querySelector('#caching-complete').show();

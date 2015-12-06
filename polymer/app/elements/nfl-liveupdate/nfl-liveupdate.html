@@ -18,6 +18,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </style>
   <template>
     <pre>[[stringify(object,name)]]</pre>
+    <!-- <button id="[[showobject(object,name)]]">+</button> -->
   </template>
 </dom-module>
 <script>
@@ -33,6 +34,12 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
           type: Object
         }
       },
+      showobject: function(object,name){
+      //var id = '#details_'+name+JSON.stringify(object); // .nextupdate;
+      var id = '#details_'+name+object.nextupdate; // .nextupdate;
+    return 'document.querySelector(\"'+id+'\").style.display=\'inline\'';
+    //return 'alert("hi")';
+    },
 
       stringify: function(object,name) {
       //console.log('object',object,'name',name);
@@ -43,7 +50,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         return JSON.stringify(object, null, '  ');
         }
 
-        var retval = 'Quarter ' + object[name].qtr + ' ' + object[name].clock + ' ' + object[name].posteam + ((object[name].yl!== '') ? (' on ' + object[name].yl):'');
+        var retval = 'Quarter ' + object[name].qtr + ' ' + object[name].clock + ' ' + object[name].posteam + ' ' + object[name].down + ' down ' +  ((object[name].yl!== '') ? (' on ' + object[name].yl):'');
         if (typeof object[name].note !== "undefined" ) retval += (' note: ' + object[name].note);
         if (typeof object[name].home !== "undefined" && typeof object[name].home.score !== "undefined") retval += (' home: ' + object[name].home.score.T);
         if (typeof object[name].away !== "undefined" && typeof object[name].away.score !== "undefined") retval += (' vs. away: ' + object[name].away.score.T);
