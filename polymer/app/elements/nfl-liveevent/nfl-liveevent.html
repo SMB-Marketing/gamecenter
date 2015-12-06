@@ -1,0 +1,51 @@
+<!--
+@license
+Copyright (c) 2015 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../../bower_components/polymer/polymer.html">
+
+<dom-module id="nfl-liveevent">
+  <style>
+    :host {
+      display: block;
+    }
+  </style>
+<template is="dom-bind">
+    <firebase-collection
+      limit-to-last="100"
+      location="https://sportsdata.firebaseio.com/nfl/gamecenter_live/{{object}}"
+      data="{{events}}"></firebase-collection>
+    <template is="dom-repeat" items="[[events]]" as="event">
+       <!--<h4><json-stringify object=[[event]]></json-stringify> [[event.__firebaseKey__]]</h4> 
+        Quarter [[event.qtr]] [[event.clock]] [[event.posteam]] [[event.down]] down on [[event.yl]]<br> -->
+        <br>
+        <span><nfl-liveupdate object=[[event]] name=[[object]]></nfl-liveupdate></span>
+      <!--
+    <template is="dom-repeat" items="[[event]]" as="obj">
+      <br>
+        <span><nfl-liveupdate object=[[obj]] name=[[event.__firebaseKey__]]></nfl-liveupdate></span>
+        <span id="detail_[[event.__firebaseKey__]]_[[obj.nextupdate]]" class="details"><json-stringify object=[[obj]]></json-stringify></span><button id="show_[[event.__firebaseKey__]]_[[obj.nextupdate]]" onclick="document.querySelector('#'+this.id.replace('show_','detail_')).style.display='inline';">+</button>
+    </template>
+    -->
+    </template>
+  </template>
+</dom-module>
+<script>
+(function() {
+  Polymer({
+    is: 'nfl-liveevent',
+
+    properties: {
+        object: {
+          type: Object
+        }
+    }
+  });
+})();
+</script>
