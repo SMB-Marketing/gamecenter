@@ -111,28 +111,53 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             <section data-route="home">
               <paper-material elevation="1">
 
-<button on-click="displayDetails">Details</button>
-<!--<button on-click="displayDetailsOne">One</button> -->
 <template is="dom-bind">
-      <!-- order-by-child="nextupdate" -->
+    <firebase-collection
+      limit-to-last="100"
+      location="https://sportsdata.firebaseio.com/nfl/schedule"
+      data="{{topevents}}"></firebase-collection>
+    <template is="dom-repeat" items="[[topevents]]" as="topevent">
+      <!--<h4>[[event.__firebaseKey__]]</h4> -->
+      <!-- <br><json-stringify object=[[topevent]]></json-stringify> -->
+      
+      <!--<h4>[[topevent.eid]]: [[topevent.away]] vs [[topevent.home]]</h4> -->
+                <a href="/events/[[topevent.eid]]">[[topevent.eid]]: [[topevent.away]] vs [[topevent.home]] [[topevent.time]]</a><br>
+<!--
+<template is="dom-bind">
+    <firebase-collection
+      limit-to-first="3"
+      location="https://sportsdata.firebaseio.com/nfl/gamecenter_live/[[topevent.eid]]"
+      data="{{events}}"></firebase-collection>
+    <template is="dom-repeat" items="[[events]]" as="event">
+      <h4>[[event.__firebaseKey__]]</h4>
+    <template is="dom-repeat" items="[[event]]" as="obj">
+      <br>
+        <span><nfl-liveupdate object=[[obj]] name=[[event.__firebaseKey__]]></nfl-liveupdate></span>
+        <span id="detail_[[event.__firebaseKey__]]_[[obj.nextupdate]]" class="details"><json-stringify object=[[obj]]></json-stringify></span><button id="show_[[event.__firebaseKey__]]_[[obj.nextupdate]]" onclick="document.querySelector('#'+this.id.replace('show_','detail_')).style.display='inline';">+</button>
+    </template>
+    </template>
+  </template>
+-->
+    </template>
+  </template>
+
+<!--
+<button on-click="displayDetails">Details</button>
+<template is="dom-bind">
     <firebase-collection
       limit-to-first="3"
       location="https://sportsdata.firebaseio.com/nfl/gamecenter_live"
       data="{{events}}"></firebase-collection>
     <template is="dom-repeat" items="[[events]]" as="event">
       <h4>[[event.__firebaseKey__]]</h4>
-      <!-- <span>event: </span><span>[[event]]</span> -->
     <template is="dom-repeat" items="[[event]]" as="obj">
-      <br><!-- <span>obj: </span><span>[[obj]]</span> -->
+      <br>
         <span><nfl-liveupdate object=[[obj]] name=[[event.__firebaseKey__]]></nfl-liveupdate></span>
         <span id="detail_[[event.__firebaseKey__]]_[[obj.nextupdate]]" class="details"><json-stringify object=[[obj]]></json-stringify></span><button id="show_[[event.__firebaseKey__]]_[[obj.nextupdate]]" onclick="document.querySelector('#'+this.id.replace('show_','detail_')).style.display='inline';">+</button>
-        <!-- <span>[[obj.nextupdate]] [[obj.2015113000]]</span> -->
-        <!-- <span>[[obj.nextupdate]] [[event.__firebaseKey__]]</span> -->
-        <!-- <span><json-stringify object=[[obj]] name=[[event.__firebaseKey__]]></json-stringify></span> -->
-        <!-- <span><x-pretty-json object=[[obj]]></x-pretty-json></span> -->
     </template>
     </template>
   </template>
+  -->
 
             </section>
 
@@ -151,6 +176,25 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
                 </h2>
                 <div>This is <span>{{params.name}}</span>'s section</div>
               </paper-material>
+            </section>
+
+            <section data-route="event-info">
+            <h4>Params: <json-stringify object={{params}}></json-stringify></h4>
+            <a name="{{params.name}}"></a>
+<template is="dom-bind">
+    <firebase-collection
+      limit-to-first="3"
+      location="https://sportsdata.firebaseio.com/nfl/gamecenter_live"
+      data="{{events}}"></firebase-collection>
+    <template is="dom-repeat" items="[[events]]" as="event">
+      <h4>[[event.__firebaseKey__]]</h4>
+    <template is="dom-repeat" items="[[event]]" as="obj">
+      <br>
+        <span><nfl-liveupdate object=[[obj]] name=[[event.__firebaseKey__]]></nfl-liveupdate></span>
+        <span id="detail_[[event.__firebaseKey__]]_[[obj.nextupdate]]" class="details"><json-stringify object=[[obj]]></json-stringify></span><button id="show_[[event.__firebaseKey__]]_[[obj.nextupdate]]" onclick="document.querySelector('#'+this.id.replace('show_','detail_')).style.display='inline';">+</button>
+    </template>
+    </template>
+  </template>
             </section>
 
             <section data-route="contact">
