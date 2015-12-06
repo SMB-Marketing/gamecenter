@@ -26,6 +26,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         Quarter [[event.qtr]] [[event.clock]] [[event.posteam]] [[event.down]] down on [[event.yl]]<br> -->
         <br>
         <span><nfl-liveupdate object=[[event]] name=[[object]]></nfl-liveupdate></span>
+        <span id="detail_[[object]]_[[event.nextupdate]]" class="details"><json-stringify object=[[event]]></json-stringify></span><button id="show_[[object]]_[[event.nextupdate]]" onclick="document.querySelector('#'+this.id.replace('show_','detail_')).style.display='inline';">+</button>
       <!--
     <template is="dom-repeat" items="[[event]]" as="obj">
       <br>
