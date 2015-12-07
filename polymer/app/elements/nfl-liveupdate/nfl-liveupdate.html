@@ -55,6 +55,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         if (typeof object[name].note !== "undefined" ) retval += (' note: ' + object[name].note);
         if (typeof object[name].home !== "undefined" && typeof object[name].home.score !== "undefined") retval += (' home: ' + object[name].home.score.T);
         if (typeof object[name].away !== "undefined" && typeof object[name].away.score !== "undefined") retval += (' vs. away: ' + object[name].away.score.T);
+        if (typeof object[name].away !== "undefined" && typeof object[name].away.stats !== "undefined") retval += ('\naway:stats.team: ' + JSON.stringify(object[name].away.stats.team,null, '  '));
+        if (typeof object[name].home !== "undefined" && typeof object[name].home.stats !== "undefined") retval += ('\nhome:stats.team: ' + JSON.stringify(object[name].home.stats.team,null, '  '));
         //if (typeof object[name].home !== "undefined" && typeof object[name].home.stats !== "undefined") retval += (' home:stats: ' + JSON.stringify(object[name].home.stats,null, '  '));
         //if (typeof object[name].away !== "undefined" && typeof object[name].away.stats !== "undefined") retval += (' away:stats: ' + JSON.stringify(object[name].away.stats,null, '  '));
         } catch (e){
