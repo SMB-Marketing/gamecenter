@@ -29,7 +29,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       data="{{events}}"></firebase-collection>
     <template is="dom-repeat" items="[[events]]" as="event">
         <br>
-        <span><nfl-liveupdate object=[[event]] name=[[object]]></nfl-liveupdate></span>
+        <span><nfl-liveupdate away=[[schedule_event.away]] home=[[schedule_event.home]] object=[[event]] name=[[object]]></nfl-liveupdate></span>
         <span id="detail_[[object]]_[[event.nextupdate]]" class="details"><json-stringify object=[[event]]></json-stringify></span><button id="show_[[object]]_[[event.nextupdate]]" onclick="document.querySelector('#'+this.id.replace('show_','detail_')).style.display='inline';">+</button>
     </template>
 
