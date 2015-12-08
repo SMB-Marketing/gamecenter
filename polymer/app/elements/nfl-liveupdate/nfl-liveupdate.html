@@ -23,7 +23,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 </dom-module>
 <script>
 (function() {
-"use strict";
+'use strict';
   Polymer({
     is: 'nfl-liveupdate',
       properties: {
@@ -58,9 +58,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         var retval='-';
         try {
         retval = 'Quarter ' + object[name].qtr + ' ' + object[name].clock + ' ' + object[name].posteam + ' ' + object[name].down + ' down ' + object[name].togo + ' yds to go ' + ((object[name].yl!== '') ? (' on ' + object[name].yl):'');
-        if (typeof object[name].note !== "undefined" ) retval += (' note: ' + object[name].note);
-        if (typeof object[name].away !== "undefined" && typeof object[name].away.score !== "undefined") retval += (' away: (' + away + ') ' + object[name].away.score.T);
-        if (typeof object[name].home !== "undefined" && typeof object[name].home.score !== "undefined") retval += (' vs. home: (' + home +') ' + object[name].home.score.T);
+        if (typeof object[name].note !== 'undefined' ) retval += (' note: ' + object[name].note);
+        if (typeof object[name].away !== 'undefined' && typeof object[name].away.score !== 'undefined') retval += (' away: (' + away + ') ' + object[name].away.score.T);
+        if (typeof object[name].home !== 'undefined' && typeof object[name].home.score !== 'undefined') retval += (' vs. home: (' + home +') ' + object[name].home.score.T);
 
         //if (typeof object[name].away !== "undefined" && typeof object[name].away.stats !== "undefined") retval += ('\naway:stats.team: ' + JSON.stringify(object[name].away.stats.team,null, '  '));
         //if (typeof object[name].home !== "undefined" && typeof object[name].home.stats !== "undefined") retval += ('\nhome:stats.team: ' + JSON.stringify(object[name].home.stats.team,null, '  '));
@@ -72,7 +72,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         }
         return retval;
 
-        ;
       }
   });
 })();

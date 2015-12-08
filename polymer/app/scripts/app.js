@@ -16,7 +16,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   var app = document.querySelector('#app');
 
   app.displayDetails = function() {
-    var elements = document.getElementsByClassName("details");
+    var elements = document.getElementsByClassName('details');
     //document.querySelector('.debug').show();
     for (var i = 0 ; i < elements.length; i++){
     elements[i].style.display='inline';
