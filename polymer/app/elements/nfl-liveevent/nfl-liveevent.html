@@ -27,7 +27,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       limit-to-last="100"
       location="https://sportsdata.firebaseio.com/nfl/gamecenter_live/{{object}}"
       data="{{events}}"></firebase-collection>
-    <template is="dom-repeat" items="[[events]]" as="event">
+    <template is="dom-repeat" items="[[events]]" as="event" sort=[[sort]]>
         <br>
         <span><nfl-liveupdate away=[[schedule_event.away]] home=[[schedule_event.home]] object=[[event]] name=[[object]]></nfl-liveupdate></span>
         <span id="detail_[[object]]_[[event.nextupdate]]" class="details"><json-stringify object=[[event]]></json-stringify></span><button id="show_[[object]]_[[event.nextupdate]]" onclick="document.querySelector('#'+this.id.replace('show_','detail_')).style.display='inline';">+</button>
@@ -44,7 +44,22 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         object: {
           type: Object
         }
+        //, events: {type: Array}
+        //, events: {type: Array; value: function(x) {return x.events;}}
+            ,sort: {
+                type: String
+            }
     }
+        , ascending: function(a, b) {
+            if (a.nextupdate > b.nextupdate) return +1;
+            else if (a.nextupdate < b.nextupdate) return -1;
+            else return 0;
+        }
+        , descending: function(b, a) {
+            if (a.nextupdate > b.nextupdate) return +1;
+            else if (a.nextupdate < b.nextupdate) return -1;
+            else return 0;
+        }
   });
 })();
 </script>

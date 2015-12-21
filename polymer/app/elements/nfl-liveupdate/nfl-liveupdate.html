@@ -17,7 +17,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     }
   </style>
   <template>
-    <pre>[[stringify(object,name,home,away)]]</pre>
+  <!--
+    <paper-card elevation="2" heading="XXX">
+     <div class="card-content">
+     YYY
+     </div>
+    </paper-card>
+    -->
+    <paper-card elevation="2" heading=[[title(object,name,home,away)]]>
+     <div class="card-content">
+     [[stringify(object,name,home,away)]]
+     </div>
+    </paper-card>
+    <br>
+    <br>
+    <!--<pre>[[stringify(object,name,home,away)]]</pre> -->
     <!-- <button id="[[showobject(object,name)]]">+</button> -->
   </template>
 </dom-module>
@@ -29,6 +43,14 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       properties: {
         object: {
           type: Object
+          /*
+          ,
+          value: function() {
+if (typeof object === "undefined")
+return {"2015112209":{"away":{"to":3},"clock":"15:00","down":0,"drives":{"crntdrv":0},"home":{"to":3},"posteam":"CIN","qtr":"Pregame","redzone":true,"togo":0,"yl":""},"nextupdate":2};
+else return object;
+          }
+          */
         },
         name: {
           type: Object
@@ -47,6 +69,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     //return 'alert("hi")';
     },
 
+      title: function(object,name,home,away) {
+      return away + ' vs. ' + home;
+      },
       stringify: function(object,name,home,away) {
       //console.log('object',object,'name',name);
         if (!object) {
